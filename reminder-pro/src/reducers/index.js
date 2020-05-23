@@ -1,7 +1,7 @@
 import * as actions from '../constants';
-import {bake_cookie, read_cookie} from 'sfcookies'
+import { bake_cookie, read_cookie } from 'sfcookies'
 
-export const reminders = (state= [], action) => {
+export const reminders = (state = [], action) => {
   let reminders = null
   state = read_cookie('reminders');
   switch(action.type){
