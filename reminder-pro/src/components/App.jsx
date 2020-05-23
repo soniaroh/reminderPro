@@ -73,7 +73,7 @@ class App extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  reminders: state.reminders
+  reminders: state
 })
 
 

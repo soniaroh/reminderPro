@@ -1,24 +1,22 @@
 import * as actions from '../constants';
+import {bake_cookie, read_cookie} from 'sfcookies'
 
-let initialState = {
-  reminders: []
-};
-export const reminders = (state= initialState, action) => {
+export const reminders = (state= [], action) => {
+  let reminders = null
+  state = read_cookie('reminders');
   switch(action.type){
     case actions.ADD_REMINDER:
-    let id =  Math.random();
-    return {
-      reminders: [...state.reminders, {
-        text: action.payload.text,
-        dueDate: action.payload.dueDate,
-        id
-      }]
-    }
+    reminders = [...state, {
+      text: action.payload.text,
+      dueDate: action.payload.dueDate,
+      id: Math.random()
+    }]
+    bake_cookie('reminders', reminders)
+    return reminders
     case actions.REMOVE_REMINDER:
-    let filtered = state.reminders.filter(reminder => reminder.id !== action.payload)
-    return {
-      reminders: filtered
-    }
+    reminders = state.filter(reminder => reminder.id !== action.payload)
+    bake_cookie('reminders', reminders)
+    return reminders
     default:
     return state
   }
