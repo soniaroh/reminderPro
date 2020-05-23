@@ -1,5 +1,4 @@
 .App {
-  width: 50%;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -9,11 +8,14 @@
 .title {
   text-align: center;
   font-size: 26px;
-  margin: 24px
 }
 
-button {
-  margin-left: 2vmax
+input {
+  margin: 5px;
+}
+
+.reminder-form {
+  padding: 5
 }
 
 .close {
@@ -30,6 +32,6 @@ button {
   cursor: pointer;
 }
 
-.formControl {
-  margin: 24px
+.form-control {
+  margin: 24px;
 }

@@ -1,8 +1,11 @@
 import * as actions from '../constants';
 
-export const addReminder = text => ({
+export const addReminder = (text, dueDate) => ({
   type: actions.ADD_REMINDER,
-  payload: text
+  payload: {
+    text,
+    dueDate
+  }
 })
 
 export const removeReminder = id => ({

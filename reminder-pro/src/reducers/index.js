@@ -9,7 +9,8 @@ export const reminders = (state= initialState, action) => {
     let id =  Math.random();
     return {
       reminders: [...state.reminders, {
-        text: action.payload,
+        text: action.payload.text,
+        dueDate: action.payload.dueDate,
         id
       }]
     }

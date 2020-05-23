@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      dueDate: ''
     }
     this.onChange = this.onChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
@@ -15,11 +16,12 @@ class App extends React.Component {
   }
 
   onChange(e) {
-    this.setState({ text: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   onAdd() {
-    this.props.addReminder(this.state.text)
+    const { text, dueDate } = this.state
+    this.props.addReminder(text, dueDate)
   }
 
   onDelete(id) {
@@ -29,17 +31,31 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
         <div className="title">
           ReminderPro
           </div>
-        <div className="form-inline">
+        <div className="form-inline reminder-form">
           <div className="form-group">
-            <input className="form-control" placeholder="I have to ..." onChange={this.onChange} />
+            <input
+              className="form-control"
+              placeholder="I have to ..."
+              onChange={this.onChange}
+              name="text"
+            />
+            <input
+              className="form-control"
+              type="datetime-local"
+              onChange={this.onChange}
+              name="dueDate"
+            />
           </div>
-
-          <button className="btn btn-success" onClick={this.onAdd}>Add Reminder</button>
-
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={this.onAdd}
+          >
+            Add Reminder
+          </button>
         </div>
         <ul className="list-group col-sm-4">
           {this.props.reminders.map(reminder => {
