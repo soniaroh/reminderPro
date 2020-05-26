@@ -1,7 +1,7 @@
 import React from 'react';
 import Reminder from './Reminder';
 import { connect } from 'react-redux';
-import { addReminder, removeReminder } from '../actions';
+import { addReminder, removeReminder, removeAll } from '../actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -68,6 +68,14 @@ class App extends React.Component {
             )
           })}
         </ul>
+        {this.props.reminders.length ? <button
+          type="button"
+          className="btn btn-danger"
+          onClick={this.props.removeAll}
+        >
+          Delete All
+          </button> : <em>you have no reminders</em>}
+
       </div>
     )
   }
@@ -77,4 +85,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { addReminder, removeReminder })(App)
+export default connect(mapStateToProps, { addReminder, removeReminder, removeAll })(App)

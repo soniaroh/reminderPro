@@ -12,3 +12,7 @@ export const removeReminder = id => ({
   type: actions.REMOVE_REMINDER,
   payload: id
 })
+
+export const removeAll = () => ({
+  type: actions.REMOVE_ALL
+})

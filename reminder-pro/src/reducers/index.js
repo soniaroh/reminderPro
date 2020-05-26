@@ -12,11 +12,16 @@ export const reminders = (state = [], action) => {
       id: Math.random()
     }]
     bake_cookie('reminders', reminders)
-    return reminders
+    return reminders;
     case actions.REMOVE_REMINDER:
     reminders = state.filter(reminder => reminder.id !== action.payload)
     bake_cookie('reminders', reminders)
-    return reminders
+    return reminders;
+
+    case actions.REMOVE_ALL :
+    reminders = [];
+    bake_cookie('reminders', reminders);
+    return reminders;
     default:
     return state
   }
